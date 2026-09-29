@@ -36,3 +36,11 @@ int union_find_init(UnionFind *uf, const size_t count) {
 
         return 0;
 }
+
+int connect(UnionFind *uf, const uint64_t f, const uint64_t s) {
+        if (!uf) {
+                return -1;
+        }
+
+        return 0;
+}

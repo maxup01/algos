@@ -19,4 +19,6 @@ typedef struct {
 
 int union_find_init(UnionFind *uf, const size_t count);
 
+int connect(UnionFind *uf, const uint64_t f, const uint64_t s);
+
 #endif
