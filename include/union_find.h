@@ -14,4 +14,6 @@ class UnionFind {
         virtual bool connected(std::uint64_t a, std::uint64_t b) const = 0;
 };
 
+class QuickFind_UF : UnionFind {};
+
 #endif
