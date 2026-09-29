@@ -16,6 +16,6 @@ typedef struct {
         struct UnionFindNode **nodes;
 } UnionFind;
 
-int union_find_init(UnionFind *uf);
+int union_find_init(UnionFind *uf, const size_t count);
 
 #endif
