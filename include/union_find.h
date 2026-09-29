@@ -12,12 +12,13 @@ class UnionFind {
         void add();
 
         virtual bool connect(std::size_t a, std::size_t b) = 0;
-        virtual bool connected(std::size_t a, std::size_t b) const = 0;
+        virtual bool connected(std::size_t a, std::size_t b) = 0;
 };
 
 class QuickFind_UF : UnionFind {
       public:
         bool connect(std::size_t a, std::size_t b) override;
+        bool connected(std::size_t a, std::size_t b) override;
 };
 
 #endif

@@ -19,3 +19,10 @@ bool QuickFind_UF::connect(std::size_t a, std::size_t b) {
 
         return true;
 }
+
+bool QuickFind_UF::connected(std::size_t a, std::size_t b) {
+        const std::size_t node_count = this->nodes_.size();
+
+        return (a >= node_count || b >= node_count) &&
+               this->nodes_[a] == this->nodes_[b];
+}
