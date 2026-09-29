@@ -1,28 +1,17 @@
 #ifndef UNION_FIND_H
 #define UNION_FIND_H
 
-#include <stddef.h>
-#include <stdint.h>
-#include <stdlib.h>
+#include <vector>
 
-typedef struct {
-        uint64_t number;
-        struct UnionFindNode **linked_nodes;
-} UnionFindNode;
+class UnionFind {
+        std::vector<uint64_t> nodes_;
 
-UnionFindNode *union_find_node_create(const uint64_t number,
-                                      const size_t linked_nodes_count);
+      public:
+        UnionFind(std::size_t nodes_count);
+        bool add();
 
-typedef struct {
-        UnionFindNode **nodes;
-        size_t allocated_nodes;
-        size_t node_count;
-} UnionFind;
-
-int union_find_init(UnionFind *uf, const size_t count);
-
-int add(UnionFind *uf, const uint64_t number);
-
-int connect(UnionFind *uf, const uint64_t f, const uint64_t s);
+        virtual bool connect(std::uint64_t a, std::uint64_t b) = 0;
+        virtual bool connected(std::uint64_t a, std::uint64_t b) const = 0;
+};
 
 #endif
