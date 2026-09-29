@@ -8,4 +8,8 @@ typedef struct {
         struct UnionFindNode **linked_nodes;
 } UnionFindNode;
 
+typedef struct {
+        struct UnionFindNode **nodes;
+} UnionFind;
+
 #endif
