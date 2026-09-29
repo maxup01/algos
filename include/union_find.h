@@ -15,10 +15,12 @@ class UnionFind {
         virtual bool connected(std::size_t a, std::size_t b) = 0;
 };
 
-class QuickFind_UF : UnionFind {
+class QuickFind_UF : public UnionFind {
       public:
         bool connect(std::size_t a, std::size_t b) override;
         bool connected(std::size_t a, std::size_t b) override;
 };
+
+class QuickUnion_UF : public UnionFind {};
 
 #endif
