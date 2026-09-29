@@ -34,8 +34,12 @@ int union_find_init(UnionFind *uf, const size_t count) {
                 return -1;
         }
 
+        uf->node_count = count;
+
         return 0;
 }
+
+int add(const uint64_t number) { return -1; }
 
 int connect(UnionFind *uf, const uint64_t f, const uint64_t s) {
         if (!uf) {
