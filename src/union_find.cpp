@@ -15,6 +15,13 @@ bool QuickFind_UF::connect(std::size_t a, std::size_t b) {
                 return false;
         }
 
+        std::size_t an = this->nodes_[a];
+        std::size_t bn = this->nodes_[b];
+
+        for (std::size_t i = 0; i < this->nodes_.size(); i++) {
+                if (this->nodes_[i] == an)
+                        this->nodes_[i] = bn;
+        }
         this->nodes_[a] = b;
 
         return true;
