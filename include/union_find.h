@@ -8,7 +8,7 @@ class UnionFind {
 
       public:
         UnionFind(std::size_t nodes_count);
-        bool add();
+        void add();
 
         virtual bool connect(std::uint64_t a, std::uint64_t b) = 0;
         virtual bool connected(std::uint64_t a, std::uint64_t b) const = 0;
