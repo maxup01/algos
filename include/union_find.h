@@ -10,7 +10,8 @@ typedef struct {
         struct UnionFindNode **linked_nodes;
 } UnionFindNode;
 
-UnionFindNode *union_find_node_create(const uint64_t number);
+UnionFindNode *union_find_node_create(const uint64_t number,
+                                      const size_t linked_nodes_count);
 
 typedef struct {
         struct UnionFindNode **nodes;
