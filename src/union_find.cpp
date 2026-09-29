@@ -48,3 +48,18 @@ std::size_t QuickUnion_UF::root(std::size_t a) {
 
         return i;
 }
+
+bool QuickUnion_UF::connect(std::size_t a, std::size_t b) {
+        const std::size_t node_count = this->nodes_.size();
+
+        if (a >= node_count || b >= node_count) {
+                return false;
+        }
+
+        const std::size_t root_a = this->root(a);
+        const std::size_t root_b = this->root(b);
+
+        this->nodes_[root_b] = root_a;
+
+        return true;
+}

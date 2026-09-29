@@ -23,6 +23,9 @@ class QuickFind_UF : public UnionFind {
 
 class QuickUnion_UF : public UnionFind {
         std::size_t root(std::size_t a);
+
+      public:
+        bool connect(std::size_t a, std::size_t b) override;
 };
 
 #endif
