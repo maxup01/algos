@@ -11,6 +11,7 @@ Percolation::Percolation(std::size_t n)
 void Percolation::open(std::size_t row, std::size_t col) {
         std::size_t cell = (row - 1) * this->grid_size + col - 1;
         this->cells_status[cell - 1] = OPEN;
+        this->open_cells_count += 1;
 
         if (0 != cell % this->grid_size) {
                 uf.connect(cell, cell + 1);
@@ -39,15 +40,7 @@ bool Percolation::isFull(std::size_t row, std::size_t col) {
                FULL;
 }
 
-std::size_t Percolation::numberOfOpenSites() {
-        std::size_t count = 0;
-
-        for (CellStatus &entry : this->cells_status) {
-                count += (entry == OPEN) ? 1 : 0;
-        }
-
-        return count;
-}
+std::size_t Percolation::numberOfOpenSites() { return this->open_cells_count; }
 
 bool Percolation::percolates() {
         return this->uf.connected(0, this->grid_size * this->grid_size + 1);

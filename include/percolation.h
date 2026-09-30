@@ -11,6 +11,7 @@ class Percolation {
         WeightedQuickUnion_UF uf;
         std::size_t grid_size;
         std::vector<CellStatus> cells_status;
+        std::size_t open_cells_count;
 
       public:
         Percolation(std::size_t n);
