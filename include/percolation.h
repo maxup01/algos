@@ -9,6 +9,7 @@ class Percolation {
 
       public:
         Percolation(std::size_t n);
+        void open(std::size_t row, std::size_t col);
 };
 
 #endif
