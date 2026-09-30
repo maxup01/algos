@@ -70,3 +70,18 @@ bool QuickUnion_UF::connected(std::size_t a, std::size_t b) {
         return !(a >= node_count || b >= node_count) &&
                (this->root(a) == this->root(b));
 }
+
+std::size_t WeightedQuickUnion_UF::root(std::size_t a) {
+        if (a >= this->nodes_.size()) {
+                throw std::out_of_range(
+                    "UnionFind::connect: index a out of range");
+        }
+
+        std::size_t i = a;
+
+        while (i != this->nodes_[i]) {
+                i = this->nodes_[i];
+        }
+
+        return i;
+}
