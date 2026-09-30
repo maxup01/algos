@@ -104,12 +104,10 @@ bool WeightedQuickUnion_UF::connect(std::size_t a, std::size_t b) {
                 this->tree_sizes[root_b] = 0;
                 this->nodes_[root_b] = root_a;
         } else if (this->tree_sizes[root_a] > this->tree_sizes[root_b]) {
-                this->tree_sizes[root_a] += 1;
                 this->tree_sizes[root_b] = 0;
                 this->nodes_[root_b] = root_a;
         } else {
                 this->tree_sizes[root_a] = 0;
-                this->tree_sizes[root_b] += 1;
                 this->nodes_[root_a] = root_b;
         }
 
