@@ -36,6 +36,7 @@ class WeightedQuickUnion_UF : public UnionFind {
       public:
         WeightedQuickUnion_UF(std::size_t nodes_count);
         bool connect(std::size_t a, std::size_t b) override;
+        bool connected(std::size_t a, std::size_t b) override;
 };
 
 #endif
