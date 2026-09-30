@@ -1,11 +1,12 @@
 #ifndef PERCOLATION_H
 #define PERCOLATION_H
 
+#include "union_find.h"
 #include <stddef.h>
-#include <vector>
 
 class Percolation {
-        std::vector<std::size_t> cells;
+        WeightedQuickUnion_UF uf;
+        std::size_t grid_size;
 
       public:
         Percolation(std::size_t n);
