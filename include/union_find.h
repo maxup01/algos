@@ -31,9 +31,11 @@ class QuickUnion_UF : public UnionFind {
 
 class WeightedQuickUnion_UF : public UnionFind {
         std::vector<std::size_t> tree_sizes;
-
-        WeightedQuickUnion_UF(std::size_t nodes_count);
         std::size_t root(std::size_t a);
+
+      public:
+        WeightedQuickUnion_UF(std::size_t nodes_count);
+        bool connect(std::size_t a, std::size_t b) override;
 };
 
 #endif
