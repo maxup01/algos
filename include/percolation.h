@@ -3,10 +3,14 @@
 
 #include "union_find.h"
 #include <stddef.h>
+#include <vector>
+
+enum CellStatus { OPEN, FULL };
 
 class Percolation {
         WeightedQuickUnion_UF uf;
         std::size_t grid_size;
+        std::vector<CellStatus> cells_status;
 
       public:
         Percolation(std::size_t n);
