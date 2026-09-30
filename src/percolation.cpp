@@ -26,3 +26,7 @@ void Percolation::open(std::size_t row, std::size_t col) {
                 uf.connect(cell, cell - this->grid_size);
         }
 }
+
+bool Percolation::percolates() {
+        return this->uf.connected(0, this->grid_size * this->grid_size + 1);
+}
