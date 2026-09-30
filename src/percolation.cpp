@@ -10,6 +10,7 @@ Percolation::Percolation(std::size_t n)
 
 void Percolation::open(std::size_t row, std::size_t col) {
         std::size_t cell = (row - 1) * this->grid_size + col;
+        this->cells_status[cell - 1] = OPEN;
 
         if (0 != cell % this->grid_size) {
                 uf.connect(cell, cell + 1);
