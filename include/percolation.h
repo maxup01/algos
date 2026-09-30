@@ -17,6 +17,7 @@ class Percolation {
         void open(std::size_t row, std::size_t col);
         bool isOpen(std::size_t row, std::size_t col);
         bool isFull(std::size_t row, std::size_t col);
+        std::size_t numberOfOpenSites();
         bool percolates();
 };
 
