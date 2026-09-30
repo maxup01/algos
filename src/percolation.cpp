@@ -39,6 +39,16 @@ bool Percolation::isFull(std::size_t row, std::size_t col) {
                FULL;
 }
 
+std::size_t Percolation::numberOfOpenSites() {
+        std::size_t count = 0;
+
+        for (CellStatus &entry : this->cells_status) {
+                count += (entry == OPEN) ? 1 : 0;
+        }
+
+        return count;
+}
+
 bool Percolation::percolates() {
         return this->uf.connected(0, this->grid_size * this->grid_size + 1);
 }
