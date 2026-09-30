@@ -71,6 +71,9 @@ bool QuickUnion_UF::connected(std::size_t a, std::size_t b) {
                (this->root(a) == this->root(b));
 }
 
+WeightedQuickUnion_UF::WeightedQuickUnion_UF(std::size_t nodes_count)
+    : UnionFind(nodes_count), tree_sizes(nodes_count, 1) {}
+
 std::size_t WeightedQuickUnion_UF::root(std::size_t a) {
         if (a >= this->nodes_.size()) {
                 throw std::out_of_range(
