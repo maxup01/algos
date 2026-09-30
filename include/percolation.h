@@ -22,4 +22,6 @@ class Percolation {
         bool percolates();
 };
 
+class PercolationStats {};
+
 #endif
