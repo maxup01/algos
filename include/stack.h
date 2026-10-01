@@ -15,6 +15,8 @@ template <typename T> struct StackNode {
 template <typename T> class Stack {
         StackNode<T> *top_node;
 
+      public:
+        Stack<T>();
         void push(T item);
         std::optional<T> pop();
 };

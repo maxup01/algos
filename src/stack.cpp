@@ -6,6 +6,10 @@ linkedList::StackNode<T>::StackNode(T item, StackNode<T> *prev) {
         this->prev = prev;
 }
 
+template <typename T> linkedList::Stack<T>::Stack() {
+        this->top_node = nullptr;
+}
+
 template <typename T> void linkedList::Stack<T>::push(T item) {
         StackNode<T> *node = new StackNode<T>(item, this->top_node);
 
