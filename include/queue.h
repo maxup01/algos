@@ -21,6 +21,7 @@ template <typename T> class Queue {
         Queue();
         void insert(T item);
         std::optional<T> take();
+        bool isEmpty();
 };
 
 } // namespace linkedList
