@@ -18,3 +18,23 @@ template <typename T> void linkedList::Queue<T>::insert(T item) {
         this->last_node->next = node;
         this->last_node = node;
 }
+
+template <typename T> std::optional<T> linkedList::Queue<T>::take() {
+        if (nullptr == this->first_node) {
+                return std::nullopt;
+        }
+
+        if (this->last_node == this->first_node) {
+                this->last_node = nullptr;
+        }
+
+        QueueNode<T> *node = this->first_node;
+
+        this->first_node = node->next;
+
+        T item = std::move(node->item);
+
+        free(node);
+
+        return item;
+}

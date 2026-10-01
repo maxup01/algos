@@ -19,6 +19,7 @@ template <typename T> class Queue {
       public:
         Queue();
         void insert(T item);
+        std::optional<T> take();
 };
 
 } // namespace linkedList
