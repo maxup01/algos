@@ -32,6 +32,10 @@ template <typename T> struct QueueNode {
 
         QueueNode(T item, int next);
 };
+
+template <typename T> class Queue {
+        QueueNode<T> **nodes;
+};
 } // namespace array
 
 #endif
