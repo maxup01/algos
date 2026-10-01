@@ -14,6 +14,9 @@ template <typename T> struct QueueNode {
 
 template <typename T> class Queue {
         QueueNode<T> *first_node;
+
+      public:
+        Queue();
 };
 
 } // namespace linkedList
