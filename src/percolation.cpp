@@ -1,6 +1,16 @@
 #include "percolation.h"
 #include <random>
 
+std::size_t Percolation::index(std::size_t row, std::size_t col) {
+        if (row < 1 || row > this->grid_size || col < 1 ||
+            col > this->grid_size) {
+                throw std::out_of_range(
+                    "Percolation: row and col must be in [1, n]");
+        }
+
+        return (row - 1) * this->grid_size + (col - 1);
+}
+
 Percolation::Percolation(std::size_t n)
     : uf(n * n + 2), cells_status(n * n, FULL) {
         if (0 == n) {

@@ -13,6 +13,8 @@ class Percolation {
         std::vector<CellStatus> cells_status;
         std::size_t open_cells_count;
 
+        std::size_t index(std::size_t row, std::size_t col);
+
       public:
         Percolation(std::size_t n);
         void open(std::size_t row, std::size_t col);
