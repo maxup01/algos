@@ -14,6 +14,7 @@ template <typename T> struct QueueNode {
 
 template <typename T> class Queue {
         QueueNode<T> *first_node;
+        QueueNode<T> *last_node;
 
       public:
         Queue();

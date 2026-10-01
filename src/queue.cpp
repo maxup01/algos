@@ -8,4 +8,5 @@ linkedList::QueueNode<T>::QueueNode(T item, QueueNode<T> *next) {
 
 template <typename T> linkedList::Queue<T>::Queue() {
         this->first_node = nullptr;
+        this->last_node = nullptr;
 }
