@@ -12,7 +12,9 @@ template <typename T> struct QueueNode {
         QueueNode(T item, QueueNode *prev);
 };
 
-template <typename T> struct Queue {};
+template <typename T> class Queue {
+        QueueNode<T> *first_node;
+};
 
 } // namespace linkedList
 
