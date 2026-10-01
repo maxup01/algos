@@ -1,7 +1,7 @@
 #include "queue.h"
 
 template <typename T>
-linkedList::QueueNode<T>::QueueNode(T item, QueueNode<T> *prev) {
+linkedList::QueueNode<T>::QueueNode(T item, QueueNode<T> *next) {
         this->item = std::move(item);
-        this->prev = prev;
+        this->next = next;
 }

@@ -7,10 +7,13 @@ namespace linkedList {
 
 template <typename T> struct QueueNode {
         T item;
-        QueueNode *prev;
+        QueueNode *next;
 
         QueueNode(T item, QueueNode *prev);
 };
+
+template <typename T> struct Queue {};
+
 } // namespace linkedList
 
 #endif
