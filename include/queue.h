@@ -39,8 +39,10 @@ template <typename T> class Queue {
         std::vector<QueueNode<T>> nodes;
         int first_node;
         int last_node;
+        linkedList::Queue<std::size_t> free_slots;
 
         Queue();
+        void insert(T item);
         std::optional<T> take();
         bool isEmpty();
 };
