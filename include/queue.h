@@ -18,6 +18,7 @@ template <typename T> class Queue {
 
       public:
         Queue();
+        void insert(T item);
 };
 
 } // namespace linkedList

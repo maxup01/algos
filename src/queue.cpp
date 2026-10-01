@@ -10,3 +10,11 @@ template <typename T> linkedList::Queue<T>::Queue() {
         this->first_node = nullptr;
         this->last_node = nullptr;
 }
+
+template <typename T> void linkedList::Queue<T>::insert(T item) {
+        linkedList::QueueNode<T> *node =
+            new linkedList::QueueNode<T>(std::move(item), nullptr);
+
+        this->last_node->next = node;
+        this->last_node = node;
+}
