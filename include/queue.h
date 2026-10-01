@@ -36,10 +36,11 @@ template <typename T> struct QueueNode {
 
 template <typename T> class Queue {
         std::vector<QueueNode<T>> nodes;
-        std::size_t first_node;
-        std::size_t last_node;
+        int first_node;
+        int last_node;
 
         Queue();
+        std::optional<T> take();
 };
 } // namespace array
 

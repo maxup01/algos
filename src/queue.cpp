@@ -45,6 +45,22 @@ template <typename T> array::QueueNode<T>::QueueNode(T item, int next) {
 }
 
 template <typename T> array::Queue<T>::Queue() : nodes() {
-        this->first_node = 0;
-        this->last_node = 0;
+        this->first_node = -1;
+        this->last_node = -1;
+}
+
+template <typename T> std::optional<T> array::Queue<T>::take() {
+        if (this->first_node < 0) {
+                return std::nullopt;
+        }
+
+        QueueNode<T> node = std::move(this->nodes[first_node]);
+
+        if (this->first_node == this->last_node) {
+                this->last_node = -1;
+        }
+
+        this->first_node = node.next;
+
+        return std::move(node.item);
 }
