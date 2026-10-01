@@ -46,4 +46,5 @@ template <typename T> array::QueueNode<T>::QueueNode(T item, int next) {
 
 template <typename T> array::Queue<T>::Queue() : nodes() {
         this->first_node = 0;
+        this->last_node = 0;
 }
