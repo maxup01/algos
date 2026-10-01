@@ -2,7 +2,7 @@
 
 template <typename T>
 linkedList::StackNode<T>::StackNode(T item, StackNode<T> *prev) {
-        this->item = item;
+        this->item = std::move(item);
         this->prev = prev;
 }
 
@@ -21,7 +21,7 @@ template <typename T> std::optional<T> linkedList::Stack<T>::pop() {
 
         this->top_node = node->prev;
 
-        T item = node->item;
+        T item = std::move(node->item);
 
         free(node);
 
