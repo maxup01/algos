@@ -8,7 +8,9 @@ template <typename T> struct StackNode {
         StackNode *prev;
 };
 
-class Stack {};
+template <typename T> class Stack {
+        StackNode<T> *top_node;
+};
 } // namespace linkedList
 
 #endif
