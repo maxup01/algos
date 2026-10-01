@@ -19,7 +19,8 @@ Percolation::Percolation(std::size_t n)
 }
 
 void Percolation::open(std::size_t row, std::size_t col) {
-        std::size_t cell = (row - 1) * this->grid_size + col - 1;
+        std::size_t cell = this->index(row, col);
+
         this->cells_status[cell - 1] = OPEN;
         this->open_cells_count += 1;
 
@@ -45,13 +46,11 @@ void Percolation::open(std::size_t row, std::size_t col) {
 }
 
 bool Percolation::isOpen(std::size_t row, std::size_t col) {
-        return this->cells_status[(row - 1) * this->grid_size + col - 1] ==
-               OPEN;
+        return this->cells_status[this->index(row, col)] == OPEN;
 }
 
 bool Percolation::isFull(std::size_t row, std::size_t col) {
-        return this->cells_status[(row - 1) * this->grid_size + col - 1] ==
-               FULL;
+        return this->cells_status[this->index(row, col)] == FULL;
 }
 
 std::size_t Percolation::numberOfOpenSites() { return this->open_cells_count; }
