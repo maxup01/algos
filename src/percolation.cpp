@@ -1,7 +1,11 @@
 #include "percolation.h"
 
 Percolation::Percolation(std::size_t n)
-    : uf(n * n + 2), cells_status(n * n, FULL) {}
+    : uf(n * n + 2), cells_status(n * n, FULL) {
+        if (0 == n) {
+                throw std::invalid_argument("n should be a positive number");
+        }
+}
 
 void Percolation::open(std::size_t row, std::size_t col) {
         std::size_t cell = (row - 1) * this->grid_size + col - 1;
