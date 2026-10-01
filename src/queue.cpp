@@ -68,3 +68,7 @@ template <typename T> std::optional<T> array::Queue<T>::take() {
 
         return std::move(node.item);
 }
+
+template <typename T> bool array::Queue<T>::isEmpty() {
+        return -1 == this->first_node;
+}

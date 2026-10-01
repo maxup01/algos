@@ -42,6 +42,7 @@ template <typename T> class Queue {
 
         Queue();
         std::optional<T> take();
+        bool isEmpty();
 };
 } // namespace array
 
