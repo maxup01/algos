@@ -38,3 +38,8 @@ template <typename T> std::optional<T> linkedList::Queue<T>::take() {
 
         return item;
 }
+
+template <typename T> array::QueueNode<T>::QueueNode(T item, int next) {
+        this->item = std::move(item);
+        this->next = next;
+}

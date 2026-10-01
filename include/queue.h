@@ -24,4 +24,14 @@ template <typename T> class Queue {
 
 } // namespace linkedList
 
+namespace array {
+
+template <typename T> struct QueueNode {
+        T item;
+        int next;
+
+        QueueNode(T item, int next);
+};
+} // namespace array
+
 #endif
