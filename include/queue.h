@@ -2,6 +2,7 @@
 #define QUEUE_H
 
 #include <optional>
+#include <vector>
 
 namespace linkedList {
 
@@ -34,7 +35,10 @@ template <typename T> struct QueueNode {
 };
 
 template <typename T> class Queue {
-        QueueNode<T> **nodes;
+        std::vector<QueueNode<T>> nodes;
+        std::size_t first_node;
+
+        Queue();
 };
 } // namespace array
 

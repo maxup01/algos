@@ -43,3 +43,7 @@ template <typename T> array::QueueNode<T>::QueueNode(T item, int next) {
         this->item = std::move(item);
         this->next = next;
 }
+
+template <typename T> array::Queue<T>::Queue() : nodes() {
+        this->first_node = 0;
+}
