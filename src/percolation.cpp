@@ -1,4 +1,5 @@
 #include "percolation.h"
+#include <random>
 
 Percolation::Percolation(std::size_t n)
     : uf(n * n + 2), cells_status(n * n, FULL) {
@@ -47,4 +48,31 @@ std::size_t Percolation::numberOfOpenSites() { return this->open_cells_count; }
 
 bool Percolation::percolates() {
         return this->uf.connected(0, this->grid_size * this->grid_size + 1);
+}
+
+PercolationStats::PercolationStats(std::size_t n, std::size_t trials) {
+        if (n == 0 || trials == 0) {
+                throw std::invalid_argument(
+                    "PercolationStats: n and trials must be > 0");
+        }
+
+        std::mt19937 rng{std::random_device{}()};
+        std::uniform_int_distribution<std::size_t> pick(0, n - 1);
+
+        std::vector<double> thresholds(trials);
+
+        for (std::size_t t = 0; t < trials; t++) {
+                Percolation p(n);
+
+                while (!p.percolates()) {
+                        std::size_t row = pick(rng);
+                        std::size_t col = pick(rng);
+                        if (!p.isOpen(row, col)) {
+                                p.open(row, col);
+                        }
+                }
+
+                thresholds[t] = static_cast<double>(p.numberOfOpenSites()) /
+                                static_cast<double>(n * n);
+        }
 }
