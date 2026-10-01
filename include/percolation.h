@@ -22,6 +22,19 @@ class Percolation {
         bool percolates();
 };
 
-class PercolationStats {};
+class PercolationStats {
+        double mean_;
+        double stddev_;
+        double confidence_lo_;
+        double confidence_hi_;
+
+      public:
+        PercolationStats(std::size_t n, std::size_t trials);
+
+        double mean() const { return mean_; }
+        double stddev() const { return stddev_; }
+        double confidenceLo() const { return confidence_lo_; }
+        double confidenceHi() const { return confidence_hi_; }
+};
 
 #endif
