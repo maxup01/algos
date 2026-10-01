@@ -53,6 +53,28 @@ template <typename T> array::Queue<T>::Queue() : nodes(), free_slots() {
         this->last_node = -1;
 }
 
+template <typename T> void array::Queue<T>::insert(T item) {
+        int slot;
+
+        if (std::optional<std::size_t> reused = this->free_slots.take()) {
+                slot = *reused;
+                this->nodes[static_cast<std::size_t>(slot)] =
+                    QueueNode<T>(std::move(item), -1);
+        } else {
+                slot = static_cast<int>(this->nodes.size());
+                this->nodes.push_back(std::move(item), -1);
+        }
+
+        if (-1 == this->last_node) {
+                this->first_node = slot;
+        } else {
+                this->nodes[static_cast<std::size_t>(this->last_node)].next =
+                    slot;
+        }
+
+        this->last_node = slot;
+}
+
 template <typename T> std::optional<T> array::Queue<T>::take() {
         if (this->first_node < 0) {
                 return std::nullopt;
