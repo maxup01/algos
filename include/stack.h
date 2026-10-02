@@ -26,6 +26,8 @@ namespace array {
 template <typename T> struct StackNode {
         T item;
         int next;
+
+        StackNode(T item, int next);
 };
 } // namespace array
 
