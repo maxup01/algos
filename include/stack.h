@@ -22,6 +22,7 @@ template <typename T> class Stack {
         Stack<T>();
         void push(T item);
         std::optional<T> pop();
+        bool isEmpty() const;
 };
 } // namespace linkedList
 

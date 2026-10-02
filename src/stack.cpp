@@ -32,6 +32,10 @@ template <typename T> std::optional<T> linkedList::Stack<T>::pop() {
         return item;
 }
 
+template <typename T> bool linkedList::Stack<T>::isEmpty() const {
+        return nullptr == this->top_node;
+}
+
 template <typename T> array::StackNode<T>::StackNode(T item, int next) {
         this->item = item;
         this->next = next;
