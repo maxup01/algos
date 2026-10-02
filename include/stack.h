@@ -23,6 +23,7 @@ template <typename T> class Stack {
 } // namespace linkedList
 
 namespace array {
+
 template <typename T> struct StackNode {
         T item;
         int next;

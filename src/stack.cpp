@@ -31,3 +31,8 @@ template <typename T> std::optional<T> linkedList::Stack<T>::pop() {
 
         return item;
 }
+
+template <typename T> array::StackNode<T>::StackNode(T item, int next) {
+        this->item = item;
+        this->next = next;
+}
