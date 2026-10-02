@@ -30,6 +30,8 @@ template <typename T> struct StackNode {
 
         StackNode(T item, int next);
 };
+
+template <typename T> class Stack {};
 } // namespace array
 
 #endif
