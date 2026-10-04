@@ -36,6 +36,28 @@ template <typename T> bool linkedList::Stack<T>::isEmpty() const {
         return nullptr == this->top_node;
 }
 
+template <typename T>
+linkedList::StackIterator<T>::StackIterator(StackNode<T> *ptr) {
+        this->top_node = ptr;
+        this->next_node = ptr;
+}
+
+template <typename T> bool linkedList::StackIterator<T>::hasNext() {
+        return nullptr != this->next_node;
+}
+
+template <typename T> std::optional<T *> linkedList::StackIterator<T>::next() {
+        if (nullptr == this->next_node) {
+                return std::nullopt;
+        }
+
+        T *item = &this->next_node->item;
+
+        this->next_node = this->next_node->prev;
+
+        return item;
+}
+
 template <typename T> array::StackNode<T>::StackNode(T item, int next) {
         this->item = item;
         this->next = next;
