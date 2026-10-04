@@ -20,6 +20,7 @@ add_library(algos STATIC
     src/union_find.cpp
     src/percolation.cpp
     src/queue.cpp
+    src/dequeue.cpp
     src/stack.cpp
 )
 
