@@ -12,6 +12,9 @@ template <typename T> struct DequeueNode {
 template <typename T> class Dequeue {
         DequeueNode<T> *first_node;
         DequeueNode<T> *last_node;
+
+      public:
+        Dequeue();
 };
 
 #endif

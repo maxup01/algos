@@ -7,3 +7,8 @@ DequeueNode<T>::DequeueNode(T item, DequeueNode<T> *prev,
         this->prev = prev;
         this->next = next;
 }
+
+template <typename T> Dequeue<T>::Dequeue() {
+        this->first_node = nullptr;
+        this->last_node = nullptr;
+}
