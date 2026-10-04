@@ -35,6 +35,8 @@ template <typename T> void Dequeue<T>::addFirst(T item) {
         if (nullptr == this->last_node) {
                 this->last_node = node;
         }
+
+        this->node_count++;
 }
 
 template <typename T> void Dequeue<T>::addLast(T item) {
@@ -51,6 +53,8 @@ template <typename T> void Dequeue<T>::addLast(T item) {
         if (nullptr == this->first_node) {
                 this->first_node = node;
         }
+
+        this->node_count++;
 }
 
 template <typename T> std::optional<T> Dequeue<T>::removeFirst() {
