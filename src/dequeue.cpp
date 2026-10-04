@@ -104,3 +104,24 @@ template <typename T> std::optional<T> Dequeue<T>::removeLast() {
 
         return item;
 }
+
+template <typename T> DequeueIterator<T>::DequeueIterator(DequeueNode<T> *ptr) {
+        this->first_node = ptr;
+        this->next_node = ptr;
+}
+
+template <typename T> bool DequeueIterator<T>::hasNext() {
+        return nullptr != this->next_node;
+}
+
+template <typename T> std::optional<T *> DequeueIterator<T>::next() {
+        if (nullptr == this->next_node) {
+                return std::nullopt;
+        }
+
+        T *item = &this->next_node->item;
+
+        this->next_node = this->next_node->next;
+
+        return item;
+}

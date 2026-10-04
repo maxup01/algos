@@ -1,6 +1,7 @@
 #ifndef DEQUEUE_H
 #define DEQUEUE_H
 
+#include "iterator.h"
 #include <optional>
 #include <stddef.h>
 
@@ -25,6 +26,15 @@ template <typename T> class Dequeue {
         void addLast(T item);
         std::optional<T> removeFirst();
         std::optional<T> removeLast();
+};
+
+template <typename T> struct DequeueIterator : public Iterator<T> {
+        DequeueNode<T> *first_node;
+        DequeueNode<T> *next_node;
+
+        DequeueIterator(DequeueNode<T> *ptr);
+        bool hasNext() override;
+        std::optional<T *> next() override;
 };
 
 #endif
