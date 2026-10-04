@@ -102,3 +102,28 @@ template <typename T> std::optional<T> array::Stack<T>::pop() {
 template <typename T> bool array::Stack<T>::isEmpty() const {
         return -1 == this->top_node;
 }
+
+template <typename T>
+array::StackIterator<T>::StackIterator(std::vector<StackNode<T>> *nodes,
+                                       int top_node) {
+        this->nodes = nodes;
+        this->top_node = top_node;
+        this->next_node = top_node;
+}
+
+template <typename T> bool array::StackIterator<T>::hasNext() {
+        return -1 != this->next_node;
+}
+
+template <typename T> std::optional<T *> array::StackIterator<T>::next() {
+        if (-1 == this->next_node) {
+                return std::nullopt;
+        }
+
+        StackNode<T> &node =
+            (*this->nodes)[static_cast<std::size_t>(this->next_node)];
+
+        this->next_node = node.next;
+
+        return &node.item;
+}
