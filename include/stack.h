@@ -56,6 +56,16 @@ template <typename T> class Stack {
         std::optional<T> pop();
         bool isEmpty() const;
 };
+
+template <typename T> struct StackIterator : public Iterator<T> {
+        std::vector<StackNode<T>> *nodes;
+        int top_node;
+        int next_node;
+
+        StackIterator(std::vector<StackNode<T>> *nodes, int top_node);
+        bool hasNext() override;
+        std::optional<T *> next() override;
+};
 } // namespace array
 
 #endif
