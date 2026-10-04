@@ -3,8 +3,10 @@
 
 template <typename T> struct DequeueNode {
         T item;
-        DequeueNode<T> *next;
         DequeueNode<T> *prev;
+        DequeueNode<T> *next;
+
+        DequeueNode(T item, DequeueNode<T> *prev, DequeueNode<T> *next);
 };
 
 #endif
