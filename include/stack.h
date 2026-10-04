@@ -4,6 +4,7 @@
 #include <optional>
 #include <vector>
 
+#include "iterator.h"
 #include "queue.h"
 
 namespace linkedList {
@@ -23,6 +24,15 @@ template <typename T> class Stack {
         void push(T item);
         std::optional<T> pop();
         bool isEmpty() const;
+};
+
+template <typename T> struct StackIterator : public Iterator<T> {
+        StackNode<T> *top_node;
+        StackNode<T> *next_node;
+
+        StackIterator(StackNode<T> *ptr);
+        bool hasNext() override;
+        std::optional<T *> next() override;
 };
 } // namespace linkedList
 
