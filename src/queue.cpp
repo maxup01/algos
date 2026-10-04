@@ -45,11 +45,24 @@ template <typename T> bool linkedList::Queue<T>::isEmpty() {
 
 template <typename T>
 linkedList::QueueIterator<T>::QueueIterator(QueueNode<T> *ptr) {
-        this->next = ptr;
+        this->next_node = ptr;
+        this->first_node = ptr;
 }
 
 template <typename T> bool linkedList::QueueIterator<T>::hasNext() {
-        return nullptr != this->next;
+        return nullptr != this->next_node;
+}
+
+template <typename T> std::optional<T *> linkedList::QueueIterator<T>::next() {
+        if (nullptr == this->next_node) {
+                return std::nullopt;
+        }
+
+        T *item = &this->next_node->item;
+
+        this->next_node = this->next_node->next_node;
+
+        return item;
 }
 
 template <typename T> array::QueueNode<T>::QueueNode(T item, int next) {

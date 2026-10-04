@@ -26,10 +26,12 @@ template <typename T> class Queue {
 };
 
 template <typename T> struct QueueIterator : public Iterator<T> {
-        QueueNode<T> *next;
+        QueueNode<T> *first_node;
+        QueueNode<T> *next_node;
 
         QueueIterator(QueueNode<T> *ptr);
         bool hasNext() override;
+        std::optional<T *> next() override;
 };
 } // namespace linkedList
 

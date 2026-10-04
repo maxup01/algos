@@ -6,7 +6,7 @@
 template <typename T> class Iterator {
       public:
         virtual bool hasNext() = 0;
-        virtual std::optional<T> next() = 0;
+        virtual std::optional<T *> next() = 0;
 };
 
 #endif
