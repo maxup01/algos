@@ -56,7 +56,15 @@ template <typename T> class Queue {
         bool isEmpty();
 };
 
-template <typename T> struct QueueIterator : public Iterator<T> {};
+template <typename T> struct QueueIterator : public Iterator<T> {
+        std::vector<QueueNode<T>> *nodes;
+        int first_node;
+        int next_node;
+
+        QueueIterator(std::vector<QueueNode<T>> *nodes, int first_node);
+        bool hasNext() override;
+        std::optional<T *> next() override;
+};
 } // namespace array
 
 #endif
