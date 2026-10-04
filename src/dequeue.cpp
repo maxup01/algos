@@ -36,3 +36,19 @@ template <typename T> void Dequeue<T>::addFirst(T item) {
                 this->last_node = node;
         }
 }
+
+template <typename T> void Dequeue<T>::addLast(T item) {
+        DequeueNode<T> *node = calloc(1, sizeof(DequeueNode<T>));
+        node->item = item;
+
+        this->last_node->next = node;
+
+        node->prev = this->last_node;
+        node->prev->next = node;
+
+        this->last_node = node;
+
+        if (nullptr == this->first_node) {
+                this->first_node = node;
+        }
+}

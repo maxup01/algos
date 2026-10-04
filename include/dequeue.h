@@ -21,6 +21,7 @@ template <typename T> class Dequeue {
         size_t size();
         bool isEmpty();
         void addFirst(T item);
+        void addLast(T item);
 };
 
 #endif
