@@ -1,6 +1,7 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include "iterator.h"
 #include <optional>
 #include <vector>
 
@@ -24,6 +25,9 @@ template <typename T> class Queue {
         bool isEmpty();
 };
 
+template <typename T> struct QueueIterator : public Iterator<T> {
+        QueueNode<T> *first_node;
+};
 } // namespace linkedList
 
 namespace array {
