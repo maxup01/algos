@@ -9,4 +9,9 @@ template <typename T> struct DequeueNode {
         DequeueNode(T item, DequeueNode<T> *prev, DequeueNode<T> *next);
 };
 
+template <typename T> class Dequeue {
+        DequeueNode<T> *first_node;
+        DequeueNode<T> *last_node;
+};
+
 #endif
