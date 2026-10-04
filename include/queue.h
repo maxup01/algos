@@ -55,6 +55,8 @@ template <typename T> class Queue {
         std::optional<T> take();
         bool isEmpty();
 };
+
+template <typename T> struct QueueIterator : public Iterator<T> {};
 } // namespace array
 
 #endif
