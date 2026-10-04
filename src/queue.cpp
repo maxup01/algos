@@ -117,3 +117,28 @@ template <typename T> std::optional<T> array::Queue<T>::take() {
 template <typename T> bool array::Queue<T>::isEmpty() {
         return -1 == this->first_node;
 }
+
+template <typename T>
+array::QueueIterator<T>::QueueIterator(std::vector<QueueNode<T>> *nodes,
+                                       int first_node) {
+        this->nodes = nodes;
+        this->first_node = first_node;
+        this->next_node = first_node;
+}
+
+template <typename T> bool array::QueueIterator<T>::hasNext() {
+        return -1 != this->next_node;
+}
+
+template <typename T> std::optional<T *> array::QueueIterator<T>::next() {
+        if (-1 == this->next_node) {
+                return std::nullopt;
+        }
+
+        QueueNode<T> &node =
+            (*this->nodes)[static_cast<std::size_t>(this->next_node)];
+
+        this->next_node = node.next;
+
+        return &node.item;
+}
