@@ -19,6 +19,7 @@ template <typename T> class Dequeue {
       public:
         Dequeue();
         size_t size();
+        bool isEmpty();
 };
 
 #endif

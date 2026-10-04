@@ -15,3 +15,7 @@ template <typename T> Dequeue<T>::Dequeue() {
 }
 
 template <typename T> size_t Dequeue<T>::size() { return this->node_count; }
+
+template <typename T> bool Dequeue<T>::isEmpty() {
+        return 0 == this->node_count;
+}
