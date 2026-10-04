@@ -26,7 +26,9 @@ template <typename T> class Queue {
 };
 
 template <typename T> struct QueueIterator : public Iterator<T> {
-        QueueNode<T> *first_node;
+        QueueNode<T> *next;
+
+        QueueIterator(QueueNode<T> *ptr);
 };
 } // namespace linkedList
 

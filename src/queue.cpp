@@ -43,6 +43,11 @@ template <typename T> bool linkedList::Queue<T>::isEmpty() {
         return nullptr == this->first_node;
 }
 
+template <typename T>
+linkedList::QueueIterator<T>::QueueIterator(QueueNode<T> *ptr) {
+        this->next = ptr;
+}
+
 template <typename T> array::QueueNode<T>::QueueNode(T item, int next) {
         this->item = std::move(item);
         this->next = next;
