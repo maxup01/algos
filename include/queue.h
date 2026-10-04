@@ -29,6 +29,7 @@ template <typename T> struct QueueIterator : public Iterator<T> {
         QueueNode<T> *next;
 
         QueueIterator(QueueNode<T> *ptr);
+        bool hasNext() override;
 };
 } // namespace linkedList
 

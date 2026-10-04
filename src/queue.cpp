@@ -48,6 +48,10 @@ linkedList::QueueIterator<T>::QueueIterator(QueueNode<T> *ptr) {
         this->next = ptr;
 }
 
+template <typename T> bool linkedList::QueueIterator<T>::hasNext() {
+        return nullptr != this->next;
+}
+
 template <typename T> array::QueueNode<T>::QueueNode(T item, int next) {
         this->item = std::move(item);
         this->next = next;
