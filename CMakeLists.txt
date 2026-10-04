@@ -19,6 +19,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_library(algos STATIC
     src/union_find.cpp
     src/percolation.cpp
+    src/queue.cpp
     src/stack.cpp
 )
 
