@@ -6,6 +6,28 @@ linkedList::QueueNode<T>::QueueNode(T item, QueueNode<T> *next) {
         this->next = next;
 }
 
+template <typename T>
+linkedList::QueueIterator<T>::QueueIterator(QueueNode<T> *ptr) {
+        this->next_node = ptr;
+        this->first_node = ptr;
+}
+
+template <typename T> bool linkedList::QueueIterator<T>::hasNext() {
+        return nullptr != this->next_node;
+}
+
+template <typename T> std::optional<T *> linkedList::QueueIterator<T>::next() {
+        if (nullptr == this->next_node) {
+                return std::nullopt;
+        }
+
+        T *item = &this->next_node->item;
+
+        this->next_node = this->next_node->next_node;
+
+        return item;
+}
+
 template <typename T> linkedList::Queue<T>::Queue() {
         this->first_node = nullptr;
         this->last_node = nullptr;
@@ -44,30 +66,38 @@ template <typename T> bool linkedList::Queue<T>::isEmpty() {
 }
 
 template <typename T>
-linkedList::QueueIterator<T>::QueueIterator(QueueNode<T> *ptr) {
-        this->next_node = ptr;
-        this->first_node = ptr;
-}
-
-template <typename T> bool linkedList::QueueIterator<T>::hasNext() {
-        return nullptr != this->next_node;
-}
-
-template <typename T> std::optional<T *> linkedList::QueueIterator<T>::next() {
-        if (nullptr == this->next_node) {
-                return std::nullopt;
-        }
-
-        T *item = &this->next_node->item;
-
-        this->next_node = this->next_node->next_node;
-
-        return item;
+linkedList::QueueIterator<T> linkedList::Queue<T>::iterator() {
+        return linkedList::QueueIterator<T>(this->first_node);
 }
 
 template <typename T> array::QueueNode<T>::QueueNode(T item, int next) {
         this->item = std::move(item);
         this->next = next;
+}
+
+template <typename T>
+array::QueueIterator<T>::QueueIterator(std::vector<QueueNode<T>> *nodes,
+                                       int first_node) {
+        this->nodes = nodes;
+        this->first_node = first_node;
+        this->next_node = first_node;
+}
+
+template <typename T> bool array::QueueIterator<T>::hasNext() {
+        return -1 != this->next_node;
+}
+
+template <typename T> std::optional<T *> array::QueueIterator<T>::next() {
+        if (-1 == this->next_node) {
+                return std::nullopt;
+        }
+
+        QueueNode<T> &node =
+            (*this->nodes)[static_cast<std::size_t>(this->next_node)];
+
+        this->next_node = node.next;
+
+        return &node.item;
 }
 
 template <typename T> array::Queue<T>::Queue() : nodes(), free_slots() {
@@ -118,27 +148,6 @@ template <typename T> bool array::Queue<T>::isEmpty() {
         return -1 == this->first_node;
 }
 
-template <typename T>
-array::QueueIterator<T>::QueueIterator(std::vector<QueueNode<T>> *nodes,
-                                       int first_node) {
-        this->nodes = nodes;
-        this->first_node = first_node;
-        this->next_node = first_node;
-}
-
-template <typename T> bool array::QueueIterator<T>::hasNext() {
-        return -1 != this->next_node;
-}
-
-template <typename T> std::optional<T *> array::QueueIterator<T>::next() {
-        if (-1 == this->next_node) {
-                return std::nullopt;
-        }
-
-        QueueNode<T> &node =
-            (*this->nodes)[static_cast<std::size_t>(this->next_node)];
-
-        this->next_node = node.next;
-
-        return &node.item;
+template <typename T> array::QueueIterator<T> array::Queue<T>::iterator() {
+        return array::QueueIterator<T>(&this->nodes, this->first_node);
 }

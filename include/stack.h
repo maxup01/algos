@@ -16,6 +16,16 @@ template <typename T> struct StackNode {
         StackNode(T item, StackNode *prev);
 };
 
+template <typename T> class StackIterator : public Iterator<T> {
+        StackNode<T> *top_node;
+        StackNode<T> *next_node;
+
+      public:
+        StackIterator(StackNode<T> *ptr);
+        bool hasNext() override;
+        std::optional<T *> next() override;
+};
+
 template <typename T> class Stack {
         StackNode<T> *top_node;
 
@@ -24,15 +34,7 @@ template <typename T> class Stack {
         void push(T item);
         std::optional<T> pop();
         bool isEmpty() const;
-};
-
-template <typename T> struct StackIterator : public Iterator<T> {
-        StackNode<T> *top_node;
-        StackNode<T> *next_node;
-
-        StackIterator(StackNode<T> *ptr);
-        bool hasNext() override;
-        std::optional<T *> next() override;
+        StackIterator<T> iterator();
 };
 } // namespace linkedList
 
@@ -45,6 +47,17 @@ template <typename T> struct StackNode {
         StackNode(T item, int next);
 };
 
+template <typename T> class StackIterator : public Iterator<T> {
+        std::vector<StackNode<T>> *nodes;
+        int top_node;
+        int next_node;
+
+      public:
+        StackIterator(std::vector<StackNode<T>> *nodes, int top_node);
+        bool hasNext() override;
+        std::optional<T *> next() override;
+};
+
 template <typename T> class Stack {
         std::vector<StackNode<T>> nodes;
         int top_node;
@@ -55,16 +68,7 @@ template <typename T> class Stack {
         void push(T item);
         std::optional<T> pop();
         bool isEmpty() const;
-};
-
-template <typename T> struct StackIterator : public Iterator<T> {
-        std::vector<StackNode<T>> *nodes;
-        int top_node;
-        int next_node;
-
-        StackIterator(std::vector<StackNode<T>> *nodes, int top_node);
-        bool hasNext() override;
-        std::optional<T *> next() override;
+        StackIterator<T> iterator();
 };
 } // namespace array
 

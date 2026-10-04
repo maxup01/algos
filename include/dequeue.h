@@ -13,6 +13,16 @@ template <typename T> struct DequeueNode {
         DequeueNode(T item, DequeueNode<T> *prev, DequeueNode<T> *next);
 };
 
+template <typename T> class DequeueIterator : public Iterator<T> {
+        DequeueNode<T> *first_node;
+        DequeueNode<T> *next_node;
+
+      public:
+        DequeueIterator(DequeueNode<T> *ptr);
+        bool hasNext() override;
+        std::optional<T *> next() override;
+};
+
 template <typename T> class Dequeue {
         DequeueNode<T> *first_node;
         DequeueNode<T> *last_node;
@@ -26,15 +36,7 @@ template <typename T> class Dequeue {
         void addLast(T item);
         std::optional<T> removeFirst();
         std::optional<T> removeLast();
-};
-
-template <typename T> struct DequeueIterator : public Iterator<T> {
-        DequeueNode<T> *first_node;
-        DequeueNode<T> *next_node;
-
-        DequeueIterator(DequeueNode<T> *ptr);
-        bool hasNext() override;
-        std::optional<T *> next() override;
+        DequeueIterator<T> iterator();
 };
 
 #endif
