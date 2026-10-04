@@ -1,4 +1,5 @@
 #include "dequeue.h"
+#include <stdlib.h>
 
 template <typename T>
 DequeueNode<T>::DequeueNode(T item, DequeueNode<T> *prev,
@@ -18,4 +19,20 @@ template <typename T> size_t Dequeue<T>::size() { return this->node_count; }
 
 template <typename T> bool Dequeue<T>::isEmpty() {
         return 0 == this->node_count;
+}
+
+template <typename T> void Dequeue<T>::addFirst(T item) {
+        DequeueNode<T> *node = calloc(1, sizeof(DequeueNode<T>));
+        node->item = item;
+
+        this->first_node->prev = node;
+
+        node->next = this->first_node;
+        node->next->prev = node;
+
+        this->first_node = node;
+
+        if (nullptr == this->last_node) {
+                this->last_node = node;
+        }
 }

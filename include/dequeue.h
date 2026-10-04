@@ -20,6 +20,7 @@ template <typename T> class Dequeue {
         Dequeue();
         size_t size();
         bool isEmpty();
+        void addFirst(T item);
 };
 
 #endif
