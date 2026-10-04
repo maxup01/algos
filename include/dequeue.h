@@ -1,6 +1,7 @@
 #ifndef DEQUEUE_H
 #define DEQUEUE_H
 
+#include <optional>
 #include <stddef.h>
 
 template <typename T> struct DequeueNode {
@@ -22,6 +23,8 @@ template <typename T> class Dequeue {
         bool isEmpty();
         void addFirst(T item);
         void addLast(T item);
+        std::optional<T> removeFirst();
+        std::optional<T> removeLast();
 };
 
 #endif

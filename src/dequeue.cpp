@@ -52,3 +52,51 @@ template <typename T> void Dequeue<T>::addLast(T item) {
                 this->first_node = node;
         }
 }
+
+template <typename T> std::optional<T> Dequeue<T>::removeFirst() {
+        if (nullptr == this->first_node) {
+                return std::nullopt;
+        }
+
+        DequeueNode<T> *node = this->first_node;
+
+        this->first_node = node->next;
+
+        if (nullptr == this->first_node) {
+                this->last_node = nullptr;
+        } else {
+                this->first_node->prev = nullptr;
+        }
+
+        T item = std::move(node->item);
+
+        free(node);
+
+        this->node_count--;
+
+        return item;
+}
+
+template <typename T> std::optional<T> Dequeue<T>::removeLast() {
+        if (nullptr == this->last_node) {
+                return std::nullopt;
+        }
+
+        DequeueNode<T> *node = this->last_node;
+
+        this->last_node = node->prev;
+
+        if (nullptr == this->last_node) {
+                this->first_node = nullptr;
+        } else {
+                this->last_node->next = nullptr;
+        }
+
+        T item = std::move(node->item);
+
+        free(node);
+
+        this->node_count--;
+
+        return item;
+}
