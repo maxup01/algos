@@ -79,3 +79,8 @@ template <typename T> T RandomizedQueue<T>::sample() {
 
         return node->item;
 }
+
+template <typename T>
+linkedList::QueueIterator<T> RandomizedQueue<T>::iterator() {
+        return linkedList::QueueIterator<T>(this->first);
+}

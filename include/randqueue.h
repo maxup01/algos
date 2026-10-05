@@ -15,6 +15,7 @@ template <typename T> class RandomizedQueue {
         void enqueue(T item);
         T dequeue();
         T sample();
+        linkedList::QueueIterator<T> iterator();
 };
 
 #endif
