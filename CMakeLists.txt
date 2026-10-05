@@ -21,6 +21,7 @@ add_library(algos STATIC
     src/percolation.cpp
     src/queue.cpp
     src/dequeue.cpp
+    src/randqueue.cpp
     src/stack.cpp
 )
 
