@@ -49,7 +49,7 @@ template <typename T> std::optional<T> linkedList::Stack<T>::pop() {
 
         T item = std::move(node->item);
 
-        free(node);
+        delete node;
 
         return item;
 }
